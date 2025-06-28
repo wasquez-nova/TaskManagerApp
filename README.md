@@ -26,7 +26,7 @@ Kullanıcılar:
 
 1. Projeyi klonlayın:
     ```bash
-    git clone <repo-link>
+    git clone https://github.com/wasquez-nova/TaskManagerApp.git
     ```
 
 2. Bağımlılıkları yükleyin:
