@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Görev Yönetim Paneli</title>
+  <link rel="stylesheet" href="panel.css" />
+</head>
+<body>
+  <div class="ust-bar">
+    <h1>Görev Yönetim Paneli</h1>
+    <div class="ayar-menu">
+      <button class="icon" onclick="toggleAyarlar()">⚙️</button>
+      <div id="ayarlarMenu" class="ayarlar-menu gizle">
+        <button onclick="sifreDegistirPaneliToggle()">Şifre Güncelle</button>
+        <button onclick="cikisYap()">Çıkış Yap</button>
+        <button id="kullanicilarBtn" onclick="kullanicilariGetir()" style="display:none;">Kullanıcıları Göster</button>
+        <button id="kullaniciOlusturBtn" onclick="adminKullaniciEkle()" style="display:none;">Kullanıcı Oluştur</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sifreDegistirAlani" class="gizle">
+    <input type="password" id="eskiSifre" placeholder="Mevcut Şifre" />
+    <input type="password" id="yeniSifre" placeholder="Yeni Şifre" />
+    <button onclick="sifreDegistir()">Şifreyi Güncelle</button>
+  </div>
+
+  <div class="gorev-ekle">
+    <input type="text" id="gorevBaslik" placeholder="Kategori (örn: iş, okul, ev)" />
+    <input type="text" id="gorevAciklama" placeholder="Görev Açıklaması" />
+    <button onclick="gorevEkle()">Görev Ekle</button>
+  </div>
+
+  <div class="sutun-container">
+    <div class="sutun" id="todo">
+      <h2>Bekleyen Görevler</h2>
+    </div>
+    <div class="sutun" id="doing">
+      <h2>Aktif Görevler</h2>
+    </div>
+    <div class="sutun" id="done">
+      <h2>Tamamlanan Görevler</h2>
+    </div>
+  </div>
+
+  <div id="kullanicilarListesi"></div>
+
+  <div id="kullaniciDetayAlani" style="padding: 1rem; margin-top: 1rem; background-color: #f9f9f9; border: 1px solid #ccc;"></div>
+
+  <script src="panel.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const rol = localStorage.getItem("rol");
+      if (rol === "Admin") {
+        document.getElementById("kullanicilarBtn").style.display = "block";
+        document.getElementById("kullaniciOlusturBtn").style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
